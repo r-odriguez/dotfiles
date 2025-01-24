@@ -1,0 +1,25 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Acme",
+		"Color Scheme - Legacy",
+		"Emacs Pro Essentials",
+		"FileManager",
+		"Git blame",
+		"GitHub Theme",
+		"LSP",
+		"LSP-gopls",
+		"LSP-intelephense",
+		"LSP-typescript",
+		"Package Control",
+		"Retro Computers Color Schemes",
+		"SortList",
+		"Tailwind CSS Autocomplete",
+		"Terminus",
+		"Theme - Legacy",
+	],
+}

@@ -1,0 +1,99 @@
+#!/usr/bin/env php
+<?php
+
+define("ARGC", $argc);
+define("ARGV", $argv);
+
+if (ARGC == 1) {
+    help();
+    exit(1);
+}
+
+$exit_code = match (ARGV[1]) {
+    "--create-img" => create_img(),
+    "--start-vm" => start_vm(),
+    "--run-vm" => run_vm(),
+    "--help", "-h" => help(),
+    default => unrecognizable_command()
+};
+
+exit($exit_code);
+
+function create_img(): int
+{
+    if (ARGC < 3)
+        return positional_argument_error();
+
+    $command = "qemu-img create -f qcow2 ".ARGV[2]." 10G";
+
+    echo "running: $command\n";
+
+    if (!exec($command)) {
+        echo "error: couldn't create image\n";
+        return 1;
+    }
+
+    echo "created image successfully\n";
+    return 0;
+}
+
+function start_vm()
+{
+    if (ARGC < 4)
+        return positional_argument_error();
+
+    $command = "qemu-system-x86_64 -enable-kvm -cdrom ".ARGV[3]
+    . " -boot menu=on -drive file=".ARGV[2]
+    . " -m 6G -cpu host -vga virtio -display sdl,gl=on";
+
+    echo "running: $command\n";
+
+    if (!exec($command)) {
+        echo "error: couldn't run virtual machine\n";
+        return 1;
+    }
+
+    echo "virtual machine finished\n";
+    return 0;
+}
+
+function run_vm(): int
+{
+    if (ARGC < 3)
+        return positional_argument_error();
+
+    $command = "qemu-system-x86_64 -enable-kvm -boot menu=on -drive file=".ARGV[2]." -m 6G";
+
+    if (!exec($command)) {
+        echo "error: couldn't run virtual machine\n";
+        return 1;
+    }
+
+    echo "virtual machine finished\n";
+    return 0;
+}
+
+function positional_argument_error(): int
+{
+    echo "error: missing positional argument\n\n";
+    help();
+    return 1;
+}
+
+function unrecognizable_command(): int
+{
+    echo "error: unrecognizable command\n\n";
+    help();
+    return 1;
+}
+
+function help(): void
+{
+    echo  "custom script for creating qemu images and running VM's \n"
+        . "\n"
+        . "help: \n"
+        . "    --help or -h  shows this help message \n"
+        . "    --create-img  create an *.img file [--create-img File.img] \n"
+        . "    --start-vm    start a VM           [--start-vm File.img os.iso] \n"
+        . "    --run-vm      run a VM             [--run-vm File.img] \n";
+}

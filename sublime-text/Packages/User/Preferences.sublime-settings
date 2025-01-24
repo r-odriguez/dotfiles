@@ -1,0 +1,32 @@
+// Settings in here override those in "Default/Preferences.sublime-settings",
+// and are overridden in turn by syntax-specific settings.
+{
+	"font_size": 14,
+	"font_face": "Ubuntu Mono Ligaturized",
+
+	"ui_scale": 1.15,
+
+	"line_padding_top": 2,
+	"line_padding_bottom": 2,
+
+	"caret_style": "phase",
+
+	"rulers": [[80, "dotted", 2]],
+	"ruler_style": "dotted",
+
+	"draw_centered": true,
+	"wrap_width": 80,
+	"word_wrap": true,
+
+	"hardware_acceleration": "opengl",
+	"overlay_scroll_bars": "system",
+
+	"color_scheme": "Packages/Retro Computers Color Schemes/Commodore 64.light.tmTheme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"theme": "Legacy.sublime-theme",
+	"index_files": true,
+	"neovintageous_build_version": 13200,
+}
