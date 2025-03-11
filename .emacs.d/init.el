@@ -26,7 +26,7 @@
 	  kept-old-versions 5)
 
 ;; (set-face-attribute 'default nil :height 155 :family "Iosevka")
-(set-frame-font "Source Code Pro-14")
-(consult-theme 'leuven)
+(set-frame-font "Source Code Pro-12")
+(consult-theme 'seashell)
 ;; (consult-theme 'wombat)
 (my-keys-minor-mode 1)

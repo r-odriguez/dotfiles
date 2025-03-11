@@ -73,15 +73,11 @@
 (use-package orderless
   :ensure t
   :custom (completion-styles '(orderless flex)))
-(use-package company
-  :ensure t
-  :hook (prog-mode . company-mode))
+(use-package company :ensure t)
 
 ;; beautifiers
 (use-package minions :ensure t :hook (prog-mode . minions-mode))
-(use-package tab-bar-echo-area
-  :ensure t
-  :config (tab-bar-echo-area-mode 1))
+(use-package tab-bar-echo-area :ensure t)
 
 ;; language servers
 (use-package yasnippet
@@ -94,10 +90,7 @@
   :config
   (add-to-list 'eglot-server-programs
                '(web-mode . ("phpactor" "language-server"))))
-(use-package flycheck
-  :ensure t
-  ;; :hook (web-mode . flycheck-mode)
-  )
+(use-package flycheck :ensure t)
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)

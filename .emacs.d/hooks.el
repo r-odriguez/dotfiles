@@ -1,5 +1,5 @@
 ;; Code ;;
-(add-hook 'prog-mode-hook #'my/olivetti-settings)
+;; (add-hook 'prog-mode-hook #'my/olivetti-settings)
 (add-hook 'prog-mode-hook (lambda ()
                             (adaptive-wrap-prefix-mode)))
 
@@ -11,13 +11,10 @@
 (add-hook 'dired-mode-hook (lambda ()
                              (dired-hide-details-mode 1)
                              (setq display-line-numbers nil)))
-(add-hook 'sr-speedbar-before-popup-hook (lambda () (setq display-line-numbers nil)))
 
 ;; languages ;;
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)
-(add-hook 'heex-ts-mode-hook
-          (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 
 ;; post before, after ;;
 (add-hook 'post-command-hook #'my/god-mode-update-cursor-type)

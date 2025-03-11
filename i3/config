@@ -1,7 +1,7 @@
 set $alt Mod1
 set $win Mod4
 
-font pango:Source Code Pro 12
+font pango:Source Code Pro 8
 title_align left
 default_border normal 1
 floating_modifier $win
@@ -242,10 +242,10 @@ set $transparent #ffffffff
 # finds out, if available)
 bindsym $win+Tab workspace back_and_forth
 bar {
-   swaybar_command waybar
    status_command i3blocks
    strip_workspace_numbers no
    position bottom
+   font pango:Source Code Pro 10
    # height 20
 
    # light
