@@ -5,7 +5,7 @@ font pango:Source Code Pro 12
 title_align left
 default_border normal 1
 floating_modifier $win
-tiling_drag modifier titlebar
+# tiling_drag modifier titlebar
 hide_edge_borders smart_no_gaps
 smart_gaps on
 focus_on_window_activation focus
@@ -17,32 +17,37 @@ gaps inner 0
 gaps outer 0
 
 # exec_always --no-startup-id setxkbmap -layout br -option ctrl:swapcaps
-exec_always --no-startup-id xset r rate 500 75
+# exec_always --no-startup-id xset r rate 500 75
 exec_always --no-startup-id xinput set-prop "PNP0C50:01 0911:5288 Touchpad" "libinput Tapping Enabled" 1
 exec_always --no-startup-id xinput set-prop "PNP0C50:01 0911:5288 Touchpad" "libinput Middle Emulation Enabled" 1
 exec_always --no-startup-id xinput set-prop "PNP0C50:01 0911:5288 Touchpad" "libinput Horizontal Scroll Enabled" 1
 exec_always --no-startup-id xinput set-prop "PNP0C50:01 0911:5288 Touchpad" "libinput Scrolling Pixel Distance" 25
-exec_always --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/a_group_of_flowers_growing_out_of_a_rocky_area.jpg
-exec --no-startup-id bat-notify
+exec_always --no-startup-id swaybg -m fill -i ~/Pictures/Wallpapers/a_group_of_flowers_growing_out_of_a_rocky_area.jpg
+# exec --no-startup-id gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+exec --no-startup-id /home/bern/.local/bin/back_and_forth
+exec --no-startup-id /home/bern/.local/bin/bat-notify
+exec --no-startup-id gammastep
+exec --no-startup-id nm-applet --indicator
+# exec --no-startup-id lxpolkit
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 set $refresh_i3status killall -SIGUSR1 i3status
-# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
-# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && $refresh_i3status
-# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-# bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 bindsym $win+f exec light -U 5
 bindsym $win+g exec light -A 5
-bindsym --release Print exec maim -s | xclip -selection clipboard -t image/png
-bindsym --release Shift+Print exec maim -s ~/Pictures/Screenshots/$(date +%d-%m-%Y_%H:%M).png
+bindsym --release Print exec /home/bern/.local/bin/sway-screenshot -m region
+bindsym --release Shift+Print exec /home/bern/.local/bin/sway-screenshot -o /home/bern/Pictures/Screenshots
 
 set $terminal kitty
-set $web      zen-browser
+set $web      zen
 set $editor   emacs
-set $apps     dmenu_run -fn SourceCodePro:size=12 -nb "#eaedef" -nf "#285577" -sb "#99aebf" -sf "#eaedef" -p "λ "
-set $execs    rofi -show run
+set $clis     wofi --show drun
+set $apps     wofi --show run
 
 # start a terminal
 bindsym $win+Return     exec $terminal
@@ -50,6 +55,7 @@ bindsym $win+e          exec $editor
 bindsym $win+w          exec $web
 bindsym $win+d          exec discord
 bindsym $win+space      exec $apps
+bindsym $win+alt+space exec $clis
 bindsym $win+n          exec $editor ~/Documents/Journal/Notes.org
 
 # kill focused window
@@ -61,6 +67,9 @@ bindsym $win+h focus left
 bindsym $win+j focus down
 bindsym $win+k focus up
 bindsym $win+l focus right
+bindsym $alt+Tab [con_mark=_prev] focus
+bindgesture swipe:right focus right
+bindgesture swipe:left focus left
 
 # alternatively, you can use the cursor keys:
 bindsym $win+Left  focus left
@@ -81,8 +90,8 @@ bindsym $win+Shift+Up    move up
 bindsym $win+Shift+Right move right
 
 # move/show scratchpad
-bindsym $win+s scratchpad show
-bindsym $win+$alt+s move scratchpad
+bindsym $win+s move scratchpad
+bindsym $win+ctrl+s scratchpad show
 
 # split in h -> horizontal; v -> vertical
 bindsym $win+z split h
@@ -186,28 +195,20 @@ mode $SysMode {
 	bindsym Escape mode "default"
 }
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bindsym $win+Tab workspace back_and_forth
-bar {
-   status_command i3blocks
-   strip_workspace_numbers no
-   position bottom
-   # height 20
+input 39658:4137:K68_BT5.0_Keyboard {
+	  xkb_layout us
+	  xkb_options "ctrl:swapcaps,compose:ralt"
+}
 
-   # light
-   colors {
-	   background $palerblue
-	   statusline $black
-	   separator  $gray
-	   #                  border      background    text
-	   focused_workspace  $darkblue	  $blue         $white
-	   active_workspace   $grayblue	  $grayblue     $gray
-	   inactive_workspace $blue       $paleblue     $lightgray
-	   urgent_workspace   $darkblue	  $red          $white
-	   binding_mode       $wine       $lightpink    $darkred
-   }
+input 1:1:AT_Translated_Set_2_keyboard {
+	  xkb_layout us
+	  xkb_options "ctrl:swapcaps,compose:ralt"
+}
 
+input type:touchpad {
+	  tap enabled
+	  natural_scroll enabled
+	  # scroll_factor 0.15
 }
 
 set $fg_norm     #545454
@@ -236,6 +237,31 @@ set $lightblue   #2e9ef4
 set $paleblue    #99aebf
 set $palerblue #b5cde0
 set $transparent #ffffffff
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bindsym $win+Tab workspace back_and_forth
+bar {
+   swaybar_command waybar
+   status_command i3blocks
+   strip_workspace_numbers no
+   position bottom
+   # height 20
+
+   # light
+   colors {
+	   background $palerblue
+	   statusline $black
+	   separator  $gray
+	   #                  border      background    text
+	   focused_workspace  $darkblue	  $blue         $white
+	   active_workspace   $grayblue	  $grayblue     $gray
+	   inactive_workspace $blue       $paleblue     $lightgray
+	   urgent_workspace   $darkblue	  $red          $white
+	   binding_mode       $wine       $lightpink    $darkred
+   }
+
+}
 
 # light theme
 # class                 $border     $backgr     $text           $indicator  $child_border
@@ -266,3 +292,5 @@ for_window [class="Nautilus"] border normal
 
 for_window [class="steam"] floating enable
 for_window [class="steam"] border normal
+
+exec /usr/libexec/xdg-desktop-portal-gtk

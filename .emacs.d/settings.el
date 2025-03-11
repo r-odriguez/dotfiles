@@ -7,9 +7,11 @@
  '(c-basic-offset 4)
  '(column-number-mode t)
  '(completion-cycle-threshold 3)
+ '(default-frame-alist '((undecorated . t)))
  '(dired-kill-when-opening-new-dired-buffer t)
  '(dired-listing-switches "-aBhl  --group-directories-first")
  '(display-battery-mode nil)
+ '(display-line-numbers nil)
  '(display-time-mode nil)
  '(dtrt-indent-global-mode t)
  '(fill-column 80)
@@ -20,6 +22,7 @@
  '(inhibit-startup-screen t)
  '(line-spacing 0.15)
  '(menu-bar-mode nil)
+ '(mouse-drag-and-drop-region t)
  '(org-agenda-files
    '("~/Projects/tusk/README.org" "/home/bn/Documents/Journal/Notes.org" "/home/bn/Documents/Journal/Agenda.org"))
  '(org-format-latex-options '(:scale 1.5))
@@ -34,7 +37,7 @@
  '(org-modern-replace-stars "◉○◈◇✳")
  '(org-startup-folded t)
  '(package-selected-packages
-   '(adaptive-wrap dtrt-indent corfu company-quickhelp rust-mode focus darkroom gtags-mode mini-modeline transpose-frames transpose-frame smex templ-ts-mode lfe-mode rainbow-delimiters sly company auto-complete go-autocomplete vterm elixir-mode cloud-theme vscode-dark-plus-theme almost-mono-themes lua-mode mindre-theme php-mode org-modern flycheck dired-preview zig-mode julia-repl julia-mode racket-mode go-mode lsp-ivy lsp-ui lsp-mode ligature tab-bar-echo-area minions consult orderless treemacs-icons-dired treemacs multiple-cursors git-gutter noccur magit which-key vertico olivetti god-mode elixir-ts-mode haskell-mode web-mode ox-reveal page-break-lines ob-elixir ob-php quelpa-use-package))
+   '(centaur-tabs sr-speedbar yasnippet-snippets yasnippets cape wrap-region yasnippet-capf yasnippet paredit adaptive-wrap dtrt-indent corfu company-quickhelp rust-mode focus darkroom gtags-mode mini-modeline transpose-frames transpose-frame smex templ-ts-mode lfe-mode rainbow-delimiters sly company auto-complete go-autocomplete vterm elixir-mode cloud-theme vscode-dark-plus-theme almost-mono-themes lua-mode mindre-theme php-mode org-modern flycheck dired-preview zig-mode julia-repl julia-mode racket-mode go-mode lsp-ivy lsp-ui lsp-mode ligature tab-bar-echo-area minions consult orderless treemacs-icons-dired treemacs multiple-cursors git-gutter noccur magit which-key vertico olivetti god-mode elixir-ts-mode haskell-mode web-mode ox-reveal page-break-lines ob-elixir ob-php quelpa-use-package))
  '(package-vc-selected-packages
    '((php-ts-mode :vc-backend Git :url "https://github.com/emacs-php/php-ts-mode")))
  '(pixel-scroll-precision-interpolate-page nil)
@@ -43,6 +46,7 @@
  '(repeat-mode t)
  '(scroll-bar-mode nil)
  '(scroll-step 10)
+ '(speedbar-use-images nil)
  '(split-height-threshold 80)
  '(split-width-threshold 120)
  '(tab-bar-show nil)

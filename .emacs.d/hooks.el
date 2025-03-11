@@ -11,6 +11,8 @@
 (add-hook 'dired-mode-hook (lambda ()
                              (dired-hide-details-mode 1)
                              (setq display-line-numbers nil)))
+(add-hook 'sr-speedbar-before-popup-hook (lambda () (setq display-line-numbers nil)))
+
 ;; languages ;;
 (add-hook 'lisp-mode-hook 'paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'paredit-mode)

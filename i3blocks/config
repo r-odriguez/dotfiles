@@ -29,9 +29,9 @@ interval=200
 command=free -h | awk '/^Mem/ { print $3 }'
 interval=1
 
-# [battery]
-# command=bn-bat
-# interval=60
+[battery]
+command=/home/bern/.local/bin/bn-bat
+interval=60
 
 [clock]
 command=date '+%d/%m/%Y %H:%M '

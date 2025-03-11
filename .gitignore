@@ -11,6 +11,8 @@
 .emacs.d/ido*
 .emacs.d/tramp*
 .emacs.d/.cache/
+.emacs.d/eln-cache/
+.emacs.d/lsp-cache/
 
 .fluxbox/lastwallpaper
 
@@ -20,3 +22,4 @@
 
 .fluxbox/fbrun_history
 sublime-text/Lib/
+sublime-text/Backup/

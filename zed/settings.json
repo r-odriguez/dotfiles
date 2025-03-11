@@ -8,44 +8,31 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "ui_font_size": 20,
-  "ui_font_family": "UbuntuSans Nerd Font",
-  "buffer_font_size": 19,
-  "buffer_font_family": "UbuntuSansMono Nerd Font",
+  "ui_font_family": "Ubuntu",
+  "buffer_font_size": 26.0,
+  "buffer_font_family": "Ubuntu Mono",
   "ui_font_features": {
-    "calt": true
+    "calt": false
   },
   "theme": "One Light",
   "outline_panel": {
     "dock": "right"
   },
-  "assistant": {
-    "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-latest"
-    },
-    "version": "2"
-  },
-  "features": {
-    "inline_completion_provider": "none"
-  },
   "vim_mode": false,
   "languages": {
     "PHP": {
-      "language_servers": ["intelephense"],
-      "prettier": {
-        "allowed": true,
-        "plugins": ["@prettier/plugin-php"],
-        "parser": "php"
-      }
+      "language_servers": ["intelephense", "!phpactor"]
     }
   },
-  "current_line_highlight": "gutter",
-  "relative_line_numbers": true,
+  "enable_language_servers": true,
+  "current_line_highlight": "none",
+  "relative_line_numbers": false,
   "centered_layout": {
     "left_padding": 0.15,
     "right_padding": 0.15
   },
   "tab_bar": {
-    "show": false
-  }
+    "show": true
+  },
+  "soft_wrap": "editor_width"
 }

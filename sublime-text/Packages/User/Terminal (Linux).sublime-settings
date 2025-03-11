@@ -1,0 +1,5 @@
+// Terminal OS Specific Settings - User
+{
+	// "terminal": "gnome-terminal"
+	"terminal": "kitty"
+}

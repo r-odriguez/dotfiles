@@ -7,21 +7,9 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-      "ctrl-space s": "workspace::Save",
-      "alt-x": "command_palette::Toggle",
-      "ctrl-space f": "file_finder::Toggle"
-    }
-  },
-
-  {
     "context": "Editor",
     "bindings": {
       // ctrl-space prefix
-      "ctrl-space s": "workspace::Save",
-      "ctrl-space e": "project_panel::ToggleFocus",
       "ctrl-space o": "workspace::ActivateNextPane",
       "ctrl-space O": "workspace::ActivatePreviousPane",
 
@@ -45,27 +33,29 @@
       "alt-shift-a": "editor::SelectToStartOfParagraph",
       "alt-e": "editor::MoveToEndOfParagraph",
       "alt-shift-e": "editor::SelectToEndOfParagraph",
+
+      // inserts
       "ctrl-o": "editor::NewlineBelow",
-      "ctrl-shift-o": "editor::NewlineAbove",
+      "ctrl-O": "editor::NewlineAbove",
       "ctrl-d": "editor::Backspace",
       "ctrl-shift-d": "editor::DeleteToPreviousSubwordStart",
       "alt-d": "editor::Delete",
       "alt-shift-d": "editor::DeleteToNextSubwordEnd",
       "ctrl-j": "editor::Newline",
+
+      // modify lines
       "ctrl-shift-^": "editor::JoinLines",
       "alt-o": "editor::SelectLargerSyntaxNode",
       "alt-ctrl-o": "editor::SelectSmallerSyntaxNode",
       "alt-l": "editor::ConvertToLowerCase",
       "alt-u": "editor::ConvertToUpperCase",
-      "ctrl-s": "buffer_search::Deploy",
+
+      // tools
+      "ctrl-r": "buffer_search::Deploy",
       "ctrl-h": ["buffer_search::Deploy", { "replace_enabled": true }],
       "ctrl-shift-s": "pane::DeploySearch",
-      "alt-x": "command_palette::Toggle",
-      "ctrl-space f": "file_finder::Toggle",
-      "alt-t": "terminal_panel::ToggleFocus",
-      "ctrl-alt-t": "workspace::ToggleBottomDock",
-      "ctrl-w": "tab_switcher::CloseSelectedItem",
-      "ctrl-alt-e": "workspace::ToggleLeftDock",
+      "alt-n": ["editor::SelectNext", { "replace_newest": false }],
+
       // lsp
       "alt-.": "pane::GoForward",
       "alt-,": "pane::GoBack"
@@ -85,7 +75,8 @@
   {
     "context": "ProjectPanel",
     "bindings": {
-      "ctrl-alt-e": "workspace::ToggleLeftDock",
+      "alt-q": "project_panel::ToggleFocus",
+      "ctrl-alt-q": "workspace::ToggleLeftDock",
       "ctrl-space e": "project_panel::ToggleFocus",
       "ctrl-n": "menu::SelectNext",
       "ctrl-p": "menu::SelectPrev",
@@ -94,9 +85,15 @@
     }
   },
 
+  // panes
   {
-    "context": "Terminal",
+    "context": "ProjectPanel || Terminal || Editor || Workspace",
     "bindings": {
+      "alt-x": "command_palette::Toggle",
+      "shift shift": "file_finder::Toggle",
+      "ctrl-w": "tab_switcher::CloseSelectedItem",
+      "alt-q": "project_panel::ToggleFocus",
+      "ctrl-alt-q": "workspace::ToggleLeftDock",
       "alt-t": "terminal_panel::ToggleFocus",
       "ctrl-alt-t": "workspace::ToggleBottomDock"
     }

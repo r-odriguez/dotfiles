@@ -16,6 +16,7 @@
 (load-file "~/.emacs.d/modes.el")
 (load-file "~/.emacs.d/hooks.el")
 (load-file "~/.emacs.d/org-babel.el")
+(load-file "~/.emacs.d/minor-mode.el")
 
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
 	  backup-by-copying t
@@ -26,5 +27,6 @@
 
 ;; (set-face-attribute 'default nil :height 155 :family "Iosevka")
 (set-frame-font "Source Code Pro-14")
-(consult-theme 'seashell)
+(consult-theme 'leuven)
 ;; (consult-theme 'wombat)
+(my-keys-minor-mode 1)

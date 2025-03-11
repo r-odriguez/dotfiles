@@ -7,9 +7,9 @@ export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
 
 # paths
 export TERM="xterm-256color"
-export EDITOR="emacs"
+export EDITOR="gnome-text-editor"
 export CHROME_EXECUTABLE="brave-browser-nightly"
-export HOME="/home/bn"
+export HOME="/home/bern"
 export APPS="$HOME/apps/"
 # export XDG_CONFIG_HOME="$HOME/.config"
 # export XDG_CACHE_HOME="$HOME/.cache"
@@ -25,21 +25,21 @@ export LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib
 export PATH="$HOME/go/bin/:$PATH"
 export PATH="$HOME/.config/composer/vendor/bin/:$PATH"
 export PATH="$HOME/.local/share/qlot/bin:$PATH"
-# export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # append
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/jvm/default/lib/server
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 SHELLCONFIG="$HOME/.bashrc"
 # utilities
+alias editor='$EDITOR'
 alias l='ls --group-directories-first --color=auto'
 alias ll='l -l'
 alias la='l -lA'
-alias cdh='cd $(find /media/Storage/ -maxdepth 4 -type d | fzf) && echo $(pwd) > $LASTWORKSPACE'
 alias c='clear'
 alias cl='c && pwd && ll'
 alias cla='c && pwd && la'
@@ -66,7 +66,6 @@ alias lockSusp='lock && suspend'
 
 # programs
 alias n='nvim'
-alias r='ranger'
 alias r='ranger'
 alias h='hx'
 alias nnn='nnn -C'
@@ -119,3 +118,5 @@ export PS1="\[\e[32m\]\u\[\e[m\]\[\e[32m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[34m
 
 # . "$HOME/.asdf/asdf.sh"
 # . "$HOME/.asdf/completions/asdf.bash"
+
+alias cdh='cd $(find -L $HOME -maxdepth 4 -type d | fzf) && export LAST_DIR=$(pwd)'

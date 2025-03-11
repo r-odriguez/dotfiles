@@ -41,6 +41,7 @@
   (zig-mode . lsp-deferred))
 
 ;; other modes
+(use-package wrap-region :ensure t)
 (use-package adaptive-wrap
   :ensure t
   :init (setq adaptive-wrap-extra-indent 4))
@@ -50,7 +51,10 @@
 (use-package olivetti :ensure t)
 (use-package vertico :ensure t)
 (use-package which-key :ensure t)
-(use-package magit :ensure t)
+(use-package magit
+  :ensure t
+  :init ;; (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  )
 (use-package git-gutter :ensure t)
 (use-package multiple-cursors :ensure t)
 (use-package treemacs :ensure t)
@@ -80,6 +84,11 @@
   :config (tab-bar-echo-area-mode 1))
 
 ;; language servers
+(use-package yasnippet
+  :ensure t
+  :custom (yas-reload-all)
+  :hook (web-mode . yas-minor-mode))
+(use-package yasnippet-snippets :ensure t)
 (use-package eglot
   :ensure t
   :config
@@ -87,7 +96,8 @@
                '(web-mode . ("phpactor" "language-server"))))
 (use-package flycheck
   :ensure t
-  :hook (web-mode . flycheck-mode))
+  ;; :hook (web-mode . flycheck-mode)
+  )
 (use-package lsp-mode
   :ensure t
   :commands (lsp lsp-deferred)
